@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function to convert decimal to binary
+void decimalToBinary(int num) {
+    printf("Binary: ");
+    for (int i = 31; i >= 0; i--) {
+        int k = num >> i;
+        if (k & 1)
+            printf("1");
+        else
+            printf("0");
+    }
+    printf("\n");
+}
+
+// Function to convert decimal to octal
+void decimalToOctal(int num) {
+    printf("Octal: %o\n", num);
+}
+
+// Function to convert decimal to hexadecimal
+void decimalToHex(int num) {
+    printf("Hexadecimal: %X\n", num);
+}
+
+// Function to convert binary to decimal
+int binaryToDecimal(char *binary) {
+    return strtol(binary, NULL, 2);
+}
+
+// Function to convert octal to decimal
+int octalToDecimal(char *octal) {
+    return strtol(octal, NULL, 8);
+}
+
+// Function to convert hexadecimal to decimal
+int hexToDecimal(char *hex) {
+    return strtol(hex, NULL, 16);
+}
+
+int main() {
+    int choice;
+    char input[32];
+    int decimal;
+
+    printf("Number System Calculator\n");
+    printf("1. Decimal to Binary/Octal/Hex\n");
+    printf("2. Binary to Decimal\n");
+    printf("3. Octal to Decimal\n");
+    printf("4. Hexadecimal to Decimal\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            printf("Enter Decimal number: ");
+            scanf("%d", &decimal);
+            decimalToBinary(decimal);
+            decimalToOctal(decimal);
+            decimalToHex(decimal);
+            break;
+        case 2:
+            printf("Enter Binary number: ");
+            scanf("%s", input);
+            decimal = binaryToDecimal(input);
+            printf("Decimal: %d\n", decimal);
+            break;
+        case 3:
+            printf("Enter Octal number: ");
+            scanf("%s", input);
+            decimal = octalToDecimal(input);
+            printf("Decimal: %d\n", decimal);
+            break;
+        case 4:
+            printf("Enter Hexadecimal number: ");
+            scanf("%s", input);
+            decimal = hexToDecimal(input);
+            printf("Decimal: %d\n", decimal);
+            break;
+        default:
+            printf("Invalid choice!\n");
+    }
+
+    return 0;
+}
